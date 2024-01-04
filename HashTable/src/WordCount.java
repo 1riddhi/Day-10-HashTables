@@ -37,10 +37,26 @@ public class WordCount {
             System.out.println("Hash Code: " + hashCode + ", Frequency: " + frequency);
         }
 
+        System.out.println("\nBefore removing words :'are, not'\n'"+paragraph);
+        
+        paragraph=removeAvoidableWord(paragraph);
+
+        System.out.println("\nAfter removing words:'are, not'\n'"+paragraph);
+
 
     }
 
     public static String[] cleanAndSplit(String text) {
         return text.trim().replace(".", " ").replace("?", " ").split("\\s+");
+    }
+
+    public static String removeAvoidableWord(String paragraph){
+        String[] avoidWords={"are","not"};
+
+        for(String removeWord:avoidWords){
+        paragraph = paragraph.replaceAll(removeWord, "");
+        }
+        return paragraph;
+
     }
 }
