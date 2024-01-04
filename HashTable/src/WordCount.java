@@ -17,8 +17,26 @@ public class WordCount {
         // System.out.println(wordCount);
 
         for(Map.Entry<String,Integer> entry:wordCount.entrySet()){
-            System.out.println(entry.getKey()+": "+entry.getValue());
+            System.out.println("Word: "+entry.getKey()+" , Frequency: "+entry.getValue());
         }
+
+        String paragraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+
+        words = cleanAndSplit(paragraph);
+
+        HashMap<Integer, Integer> wordFrequencies = new HashMap<>();
+
+        for (String word : words) {
+            int hashCode = word.hashCode();
+            wordFrequencies.put(hashCode, wordFrequencies.getOrDefault(hashCode, 0) + 1);
+        }
+
+        for (HashMap.Entry<Integer, Integer> entry : wordFrequencies.entrySet()) {
+            int hashCode = entry.getKey();
+            int frequency = entry.getValue();
+            System.out.println("Hash Code: " + hashCode + ", Frequency: " + frequency);
+        }
+
 
     }
 
